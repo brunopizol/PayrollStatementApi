@@ -1,0 +1,274 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento\\FolhaDePagamento.Presentation.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Application\\FolhaDePagamento.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Application\\FolhaDePagamento.Application.csproj",
+        "projectName": "FolhaDePagamento.Application",
+        "projectPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Application\\FolhaDePagamento.Application.csproj",
+        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Domain\\FolhaDePagamento.Domain.csproj": {
+                "projectPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Domain\\FolhaDePagamento.Domain.csproj"
+              },
+              "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Infra\\FolhaDePagamento.Infra.csproj": {
+                "projectPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Infra\\FolhaDePagamento.Infra.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Domain\\FolhaDePagamento.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Domain\\FolhaDePagamento.Domain.csproj",
+        "projectName": "FolhaDePagamento.Domain",
+        "projectPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Domain\\FolhaDePagamento.Domain.csproj",
+        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.8.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Infra\\FolhaDePagamento.Infra.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Infra\\FolhaDePagamento.Infra.csproj",
+        "projectName": "FolhaDePagamento.Infra",
+        "projectPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Infra\\FolhaDePagamento.Infra.csproj",
+        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Infra\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Domain\\FolhaDePagamento.Domain.csproj": {
+                "projectPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Domain\\FolhaDePagamento.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento\\FolhaDePagamento.Presentation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento\\FolhaDePagamento.Presentation.csproj",
+        "projectName": "FolhaDePagamento.Presentation",
+        "projectPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento\\FolhaDePagamento.Presentation.csproj",
+        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Application\\FolhaDePagamento.Application.csproj": {
+                "projectPath": "C:\\Users\\bruno\\source\\repos\\FolhaDePagamento\\FolhaDePagamento.Application\\FolhaDePagamento.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.15.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
