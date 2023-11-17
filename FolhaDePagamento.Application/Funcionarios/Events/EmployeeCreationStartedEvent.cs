@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace FolhaDePagamento.Application.Funcionarios.Events
 {
-    internal class EmployeeCreationStartedEvent
+    public class EmployeeCreationStartedEvent
     {
+        public DateTime CreationStartTime { get; }
+
+        public EmployeeCreationStartedEvent(DateTime creationStartTime)
+        {
+            CreationStartTime = creationStartTime;
+        }
     }
 }

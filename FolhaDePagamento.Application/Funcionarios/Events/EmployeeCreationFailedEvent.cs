@@ -14,8 +14,8 @@ namespace FolhaDePagamento.Application.Funcionarios.Events
 
         public EmployeeCreationFailedEvent(CreateEmployeeCommand createEmployeeCommand, string errorMessage)
         {
-            CreateEmployeeCommand = createEmployeeCommand;
-            ErrorMessage = errorMessage;
+            CreateEmployeeCommand = createEmployeeCommand ?? throw new ArgumentNullException(nameof(createEmployeeCommand));
+            ErrorMessage = errorMessage ?? throw new ArgumentNullException(nameof(errorMessage));
         }
     }
 

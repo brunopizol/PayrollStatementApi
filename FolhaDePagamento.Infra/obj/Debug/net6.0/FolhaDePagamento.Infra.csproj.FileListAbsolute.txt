@@ -1,0 +1,15 @@
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\bin\Debug\net6.0\FolhaDePagamento.Infra.deps.json
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\bin\Debug\net6.0\FolhaDePagamento.Infra.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\bin\Debug\net6.0\FolhaDePagamento.Infra.pdb
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\bin\Debug\net6.0\FolhaDePagamento.Domain.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\bin\Debug\net6.0\FolhaDePagamento.Domain.pdb
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\FolhaDePagamento.Infra.csproj.AssemblyReference.cache
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\FolhaDePagamento.Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\FolhaDePagamento.Infra.AssemblyInfoInputs.cache
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\FolhaDePagamento.Infra.AssemblyInfo.cs
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\FolhaDePagamento.Infra.csproj.CoreCompileInputs.cache
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\FolhaDePagamento.Infra.csproj.CopyComplete
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\FolhaDePagamento.Infra.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\refint\FolhaDePagamento.Infra.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\FolhaDePagamento.Infra.pdb
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Infra\obj\Debug\net6.0\ref\FolhaDePagamento.Infra.dll

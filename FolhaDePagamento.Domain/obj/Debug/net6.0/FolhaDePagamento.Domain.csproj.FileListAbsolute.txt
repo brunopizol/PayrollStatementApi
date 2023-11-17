@@ -1,0 +1,12 @@
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\bin\Debug\net6.0\FolhaDePagamento.Domain.deps.json
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\bin\Debug\net6.0\FolhaDePagamento.Domain.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\bin\Debug\net6.0\FolhaDePagamento.Domain.pdb
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\obj\Debug\net6.0\FolhaDePagamento.Domain.csproj.AssemblyReference.cache
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\obj\Debug\net6.0\FolhaDePagamento.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\obj\Debug\net6.0\FolhaDePagamento.Domain.AssemblyInfoInputs.cache
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\obj\Debug\net6.0\FolhaDePagamento.Domain.AssemblyInfo.cs
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\obj\Debug\net6.0\FolhaDePagamento.Domain.csproj.CoreCompileInputs.cache
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\obj\Debug\net6.0\FolhaDePagamento.Domain.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\obj\Debug\net6.0\refint\FolhaDePagamento.Domain.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\obj\Debug\net6.0\FolhaDePagamento.Domain.pdb
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Domain\obj\Debug\net6.0\ref\FolhaDePagamento.Domain.dll

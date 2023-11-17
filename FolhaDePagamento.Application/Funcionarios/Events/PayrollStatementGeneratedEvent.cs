@@ -1,9 +1,4 @@
 ﻿using FolhaDePagamento.Application.Funcionarios.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FolhaDePagamento.Application.Funcionarios.Events
 {
@@ -15,8 +10,7 @@ namespace FolhaDePagamento.Application.Funcionarios.Events
         public PayrollStatementGeneratedEvent(int employeeId, PayrollStatementDto payrollStatement)
         {
             EmployeeId = employeeId;
-            PayrollStatement = payrollStatement;
+            PayrollStatement = payrollStatement ?? throw new ArgumentNullException(nameof(payrollStatement));
         }
     }
-
 }

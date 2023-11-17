@@ -1,23 +1,22 @@
-﻿using FolhaDePagamento.Application.Funcionarios.Commands;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using FolhaDePagamento.Application.Funcionarios.Commands;
 using FolhaDePagamento.Application.Funcionarios.DTOs;
 using FolhaDePagamento.Application.Funcionarios.Events;
 using FolhaDePagamento.Domain.Enums;
 using FolhaDePagamento.Infra.Context;
 using MediatR;
 using PayrollApi.Services.Payroll.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace FolhaDePagamento.Application.Funcionarios.Handlers
 {
     public class GeneratePayrollStatementCommandHandler : IRequestHandler<GeneratePayrollStatementCommand, PayrollStatementDto>
     {
         private readonly MyDbContext _dbContext;
-        private readonly IMediator _mediator;
-        private double _totalDeductions = 0;
+        private readonly IMediator _mediator;       
         private readonly List<PayrollStatementItemDto> _items;
 
         public GeneratePayrollStatementCommandHandler(MyDbContext dbContext, IMediator mediator)
@@ -29,77 +28,125 @@ namespace FolhaDePagamento.Application.Funcionarios.Handlers
 
         public async Task<PayrollStatementDto> Handle(GeneratePayrollStatementCommand request, CancellationToken cancellationToken)
         {
-            var employee = await _dbContext.Employees.FindAsync(request.EmployeeId);
+            try
+            {
+                return await HandleInternal(request, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle accordingly
+                // You might also want to notify the user about the failure
+                await _mediator.Publish(new PayrollStatementGenerationFailedEvent(request.EmployeeId, "An error occurred while processing the request."));
+                return null; // or throw a more specific exception if needed
+            }
+        }
+
+        private async Task<PayrollStatementDto> HandleInternal(GeneratePayrollStatementCommand request, CancellationToken cancellationToken)
+        {
+            var employee = await GetEmployeeAsync(request.EmployeeId);
             if (employee == null)
             {
-                await _mediator.Publish(new PayrollStatementGenerationFailedEvent(request.EmployeeId, "Employee not found."));
+                await NotifyPayrollStatementGenerationFailed(request.EmployeeId, "Employee not found.");
                 return null;
             }
 
-            CalculateNetAmount(employee);
+            var payrollStatement = CreatePayrollStatement(employee);
 
-            var payrollStatement = new PayrollStatementDto
-            {
-                ReferenceMonth = DateTime.Now.ToString("MMMM yyyy"),
-                Items = _items,
-                GrossSalary = employee.GrossSalary,
-                TotalDeductions = -_totalDeductions,
-                NetSalary = employee.GrossSalary - _totalDeductions
-            };
-
-            await _mediator.Publish(new PayrollStatementGeneratedEvent(employee.Id,payrollStatement));
+            await NotifyPayrollStatementGenerated(employee.Id, payrollStatement);
 
             return payrollStatement;
         }
 
-        private void CalculateNetAmount(Employee employee)
+        private async Task<Employee> GetEmployeeAsync(int employeeId)
         {
-            AddEarnings("Salary", employee.GrossSalary);
-            AddDeductionIfTrue("INSS", CalculateInss(employee.GrossSalary) > 0);
-            AddDeductionIfTrue("Income Tax", CalculateIncomeTax(employee.GrossSalary) > 0);
-            AddDeductionIfTrue("Dental Plan Discount", employee.DentalPlanDiscount == true);
-            AddDeductionIfTrue("Health Plan Discount", employee.HealthPlanDiscount == true);
-            AddDeductionIfTrue("Transportation Voucher Discount", employee.TransportationVoucherDiscount == true && employee.GrossSalary >= 1500, employee.GrossSalary * 0.06);
-            AddNonInfluence("FGTS", employee.GrossSalary * 0.08);
+            return await _dbContext.Employees.FindAsync(employeeId);
         }
 
-        private void AddDeductionIfTrue(string description, bool condition, double value = 0)
+        private async Task NotifyPayrollStatementGenerationFailed(int employeeId, string errorMessage)
+        {
+            await _mediator.Publish(new PayrollStatementGenerationFailedEvent(employeeId, errorMessage));
+        }
+
+        private PayrollStatementDto CreatePayrollStatement(Employee employee)
+        {
+            var deductions = new List<PayrollStatementItemDto>();
+
+            AddEarnings(deductions, "Salary", employee.GrossSalary);
+            AddDeductionIfTrue(deductions, "INSS", CalculateInss(employee.GrossSalary) > 0);
+            AddDeductionIfTrue(deductions, "Income Tax", CalculateIncomeTax(employee.GrossSalary) > 0);
+            AddDeductionIfTrue(deductions, "Dental Plan Discount", employee.DentalPlanDiscount == true);
+            AddDeductionIfTrue(deductions, "Health Plan Discount", employee.HealthPlanDiscount == true);
+            AddDeductionIfTrue(deductions, "Transportation Voucher Discount", employee.TransportationVoucherDiscount == true && employee.GrossSalary >= 1500, employee.GrossSalary * 0.06);
+            AddNonInfluence(deductions, "FGTS", employee.GrossSalary * 0.08);
+
+            var totalDeductions = deductions.Sum(d => d.Amount);
+
+            return new PayrollStatementDto(
+                DateTime.Now.ToString("MMMM yyyy"),
+                deductions.AsReadOnly(),
+                employee.GrossSalary,
+                -totalDeductions,
+                employee.GrossSalary - totalDeductions
+            );
+        }
+
+
+
+        private List<PayrollStatementItemDto> CalculatePayrollItems(Employee employee)
+        {
+            var items = new List<PayrollStatementItemDto>();
+
+            AddEarnings(items, "Salary", employee.GrossSalary);
+            AddDeductionIfTrue(items, "INSS", CalculateInss(employee.GrossSalary) > 0);
+            AddDeductionIfTrue(items, "Income Tax", CalculateIncomeTax(employee.GrossSalary) > 0);
+            AddDeductionIfTrue(items, "Dental Plan Discount", employee.DentalPlanDiscount == true);
+            AddDeductionIfTrue(items, "Health Plan Discount", employee.HealthPlanDiscount == true);
+            AddDeductionIfTrue(items, "Transportation Voucher Discount", employee.TransportationVoucherDiscount == true && employee.GrossSalary >= 1500, employee.GrossSalary * 0.06);
+            AddNonInfluence(items, "FGTS", employee.GrossSalary * 0.08);
+
+            return items;
+        }
+
+  
+
+
+        private void AddDeductionIfTrue(List<PayrollStatementItemDto> items, string description, bool condition, double value = 0)
         {
             if (condition)
             {
-                AddDeduction(description, value);
+                AddDeduction(items, description, value);
             }
         }
 
-        private void AddDeduction(string description, double value)
+        private void AddDeduction(List<PayrollStatementItemDto> items, string description, double value)
         {
-            _totalDeductions += value;
-            _items.Add(new PayrollStatementItemDto
-            {
-                Type = SalaryType.Deduction.ToString(),
-                Amount = -value,
-                Description = description
-            });
+            items.Add(new PayrollStatementItemDto(
+                SalaryType.Deduction.ToString(),
+                -value, // negativo para representar dedução
+                description,
+                SalaryType.Deduction // ou o tipo apropriado para dedução
+            ));
         }
 
-        private void AddEarnings(string description, double value)
+
+        private void AddEarnings(List<PayrollStatementItemDto> items, string description, double value)
         {
-            _items.Add(new PayrollStatementItemDto
-            {
-                Type = SalaryType.Earnings.ToString(),
-                Amount = value,
-                Description = description
-            });
+            items.Add(new PayrollStatementItemDto(
+                SalaryType.Earnings.ToString(),
+                value,
+                description,
+                SalaryType.Earnings // ou o tipo apropriado para ganhos
+            ));
         }
 
-        private void AddNonInfluence(string description, double value)
+        private void AddNonInfluence(List<PayrollStatementItemDto> items, string description, double value)
         {
-            _items.Add(new PayrollStatementItemDto
-            {
-                Type = SalaryType.NonInfluence.ToString(),
-                Amount = value,
-                Description = description
-            });
+            items.Add(new PayrollStatementItemDto(
+                SalaryType.NonInfluence.ToString(),
+                value,
+                description,
+                SalaryType.NonInfluence // ou o tipo apropriado para itens sem influência
+            ));
         }
 
         private double CalculateInss(double grossSalary)
@@ -129,6 +176,11 @@ namespace FolhaDePagamento.Application.Funcionarios.Handlers
             return Math.Min(baseSalary *
                         brackets.First(bracket => baseSalary <= bracket.Bracket).Rate,
                         brackets.First(bracket => baseSalary <= bracket.Bracket).Ceiling);
+        }
+
+        private async Task NotifyPayrollStatementGenerated(int employeeId, PayrollStatementDto payrollStatement)
+        {
+            await _mediator.Publish(new PayrollStatementGeneratedEvent(employeeId, payrollStatement));
         }
     }
 }

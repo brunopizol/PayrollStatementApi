@@ -13,7 +13,7 @@ namespace FolhaDePagamento.Application.Funcionarios.Events
 
         public EmployeeCreatedEvent(Employee createdEmployee)
         {
-            CreatedEmployee = createdEmployee;
+            CreatedEmployee = createdEmployee ?? throw new ArgumentNullException(nameof(createdEmployee));
         }
     }
 

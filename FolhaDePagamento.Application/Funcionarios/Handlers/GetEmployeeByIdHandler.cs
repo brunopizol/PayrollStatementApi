@@ -22,17 +22,32 @@ namespace FolhaDePagamento.Application.Funcionarios.Handlers
 
         public async Task<Employee> Handle(GetEmployeeByIdQuery request, CancellationToken cancellationToken)
         {
-            var employee = await _dbContext.Employees
-                .FirstOrDefaultAsync(e => e.Id == request.EmployeeId, cancellationToken);
+            var employee = await GetEmployeeAsync(request.EmployeeId, cancellationToken);
 
             if (employee == null)
             {
-                await _mediator.Publish(new EmployeeNotFoundEvent(request.EmployeeId), cancellationToken);
+                await NotifyEmployeeNotFound(request.EmployeeId, cancellationToken);
                 return null;
             }
 
-            await _mediator.Publish(new EmployeeFoundEvent(request.EmployeeId), cancellationToken);
+            await NotifyEmployeeFound(request.EmployeeId, cancellationToken);
             return employee;
+        }
+
+        private async Task<Employee> GetEmployeeAsync(int employeeId, CancellationToken cancellationToken)
+        {
+            return await _dbContext.Employees
+                .FirstOrDefaultAsync(e => e.Id == employeeId, cancellationToken);
+        }
+
+        private async Task NotifyEmployeeNotFound(int employeeId, CancellationToken cancellationToken)
+        {
+            await _mediator.Publish(new EmployeeNotFoundEvent(employeeId), cancellationToken);
+        }
+
+        private async Task NotifyEmployeeFound(int employeeId, CancellationToken cancellationToken)
+        {
+            await _mediator.Publish(new EmployeeFoundEvent(employeeId), cancellationToken);
         }
     }
 }

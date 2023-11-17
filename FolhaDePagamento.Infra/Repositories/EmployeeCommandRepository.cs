@@ -2,44 +2,43 @@
 using FolhaDePagamento.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using PayrollApi.Services.Payroll.Domain.Entities;
-using System.Threading;
-using System.Threading.Tasks;
 
-public class CommandEmployeeRepository : ICommandRepository<Employee>
+public class CommandEmployeeRepository : ICommandRepository<Employee>, IDisposable
 {
-    private readonly MyDbContext dbContext;
+    private readonly MyDbContext _dbContext;
 
     public CommandEmployeeRepository(MyDbContext dbContext)
     {
-        this.dbContext = dbContext;
+        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
     }
 
     public void Insert(Employee entity)
     {
-        dbContext.Employees.Add(entity);
-        dbContext.SaveChanges();
+        _dbContext.Employees.Add(entity);
     }
 
     public void Update(Employee entity)
     {
-        dbContext.Entry(entity).State = EntityState.Modified;
-        dbContext.SaveChanges();
+        _dbContext.Entry(entity).State = EntityState.Modified;
     }
 
     public void Delete(Employee entity)
     {
-        dbContext.Employees.Remove(entity);
-        dbContext.SaveChanges();
+        _dbContext.Employees.Remove(entity);
     }
 
     public async Task AddAsync(Employee entity)
     {
-        await dbContext.Employees.AddAsync(entity);
-        await dbContext.SaveChangesAsync();
+        await _dbContext.Employees.AddAsync(entity);
+    }
+
+    public void Dispose()
+    {
+        _dbContext.Dispose();
     }
 
     public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        await dbContext.SaveChangesAsync(cancellationToken);
+        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 }

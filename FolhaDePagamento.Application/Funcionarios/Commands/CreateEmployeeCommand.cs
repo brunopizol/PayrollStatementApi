@@ -1,5 +1,9 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using FolhaDePagamento.Application.Funcionarios.Validators;
+using FolhaDePagamento.Domain.Interfaces;
+using MediatR;
 using PayrollApi.Services.Payroll.Domain.Entities;
+using System;
 
 public class CreateEmployeeCommand : IRequest<Employee>
 {
@@ -14,15 +18,15 @@ public class CreateEmployeeCommand : IRequest<Employee>
     public bool HasTransportationVoucherDiscount { get; }
 
     public CreateEmployeeCommand(
-        string firstName,
-        string lastName,
-        string document,
-        string department,
-        double grossSalary,
-        DateTime hireDate,
-        bool hasHealthPlanDiscount,
-        bool hasDentalPlanDiscount,
-        bool hasTransportationVoucherDiscount)
+       string firstName,
+       string lastName,
+       string document,
+       string department,
+       double grossSalary,
+       DateTime hireDate,
+       bool hasHealthPlanDiscount,
+       bool hasDentalPlanDiscount,
+       bool hasTransportationVoucherDiscount)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -34,4 +38,40 @@ public class CreateEmployeeCommand : IRequest<Employee>
         HasDentalPlanDiscount = hasDentalPlanDiscount;
         HasTransportationVoucherDiscount = hasTransportationVoucherDiscount;
     }
+    public static CreateEmployeeCommand Create(
+       string firstName,
+       string lastName,
+       string document,
+       string department,
+       double grossSalary,
+       DateTime hireDate,
+       bool hasHealthPlanDiscount,
+       bool hasDentalPlanDiscount,
+       bool hasTransportationVoucherDiscount)
+    {
+        var validator = new CreateEmployeeCommandValidator();
+        validator.ValidateAndThrow(new CreateEmployeeCommand(
+            firstName,
+            lastName,
+            document,
+            department,
+            grossSalary,
+            hireDate,
+            hasHealthPlanDiscount,
+            hasDentalPlanDiscount,
+            hasTransportationVoucherDiscount));
+
+        return new CreateEmployeeCommand(
+            firstName,
+            lastName,
+            document,
+            department,
+            grossSalary,
+            hireDate,
+            hasHealthPlanDiscount,
+            hasDentalPlanDiscount,
+            hasTransportationVoucherDiscount);
+    }
+
+
 }

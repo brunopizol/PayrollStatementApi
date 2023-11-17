@@ -9,17 +9,16 @@ namespace PayrollApi.Services.Payroll.Domain.Entities
 {
     public class Employee
     {
-        [Key]
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Document { get; set; }
-        public string Department { get; set; }
-        public double GrossSalary { get; set; }
-        public DateTime HireDate { get; set; }
-        public bool HealthPlanDiscount { get; set; }
-        public bool DentalPlanDiscount { get; set; }
-        public bool TransportationVoucherDiscount { get; set; }
+        public int Id { get; private set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public string Document { get; private set; }
+        public string Department { get; private set; }
+        public double GrossSalary { get; private set; }
+        public DateTime HireDate { get; private set; }
+        public bool HealthPlanDiscount { get; private set; }
+        public bool DentalPlanDiscount { get; private set; }
+        public bool TransportationVoucherDiscount { get; private set; }
 
         [NotMapped]
         [JsonIgnore]
@@ -29,8 +28,9 @@ namespace PayrollApi.Services.Payroll.Domain.Entities
         [JsonIgnore]
         public bool? AlreadyExists { get; private set; }
 
-        public Employee()
+        private Employee()
         {
+            // Private constructor to enforce the use of the factory method
         }
 
         public Employee(string firstName, string lastName, string document, string department, double grossSalary,
@@ -55,12 +55,19 @@ namespace PayrollApi.Services.Payroll.Domain.Entities
             }
         }
 
+        public static Employee Create(string firstName, string lastName, string document, string department, double grossSalary,
+                        DateTime hireDate, bool healthPlanDiscount, bool dentalPlanDiscount, bool transportationVoucherDiscount)
+        {
+            return new Employee(firstName, lastName, document, department, grossSalary, hireDate,
+                                healthPlanDiscount, dentalPlanDiscount, transportationVoucherDiscount);
+        }
+
         public void SetAlreadyExists(bool value)
         {
             AlreadyExists = value;
         }
 
-        public class EmployeeValidation : AbstractValidator<Employee>
+        private class EmployeeValidation : AbstractValidator<Employee>
         {
             public EmployeeValidation()
             {
@@ -72,7 +79,6 @@ namespace PayrollApi.Services.Payroll.Domain.Entities
                     .NotEmpty().WithMessage("Employee's document is required")
                     .Must(BeValidCpf).WithMessage("Invalid CPF");
             }
-
             private bool BeValidCpf(string cpf)
             {
                 cpf = cpf.Trim().Replace(".", "").Replace("-", "");

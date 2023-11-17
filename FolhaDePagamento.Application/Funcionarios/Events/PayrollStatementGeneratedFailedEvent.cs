@@ -14,7 +14,7 @@ namespace FolhaDePagamento.Application.Funcionarios.Events
         public PayrollStatementGenerationFailedEvent(int employeeId, string errorMessage)
         {
             EmployeeId = employeeId;
-            ErrorMessage = errorMessage;
+            ErrorMessage = errorMessage ?? throw new ArgumentNullException(nameof(errorMessage));
         }
     }
 

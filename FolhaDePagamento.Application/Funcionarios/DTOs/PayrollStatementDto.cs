@@ -1,17 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FolhaDePagamento.Application.Funcionarios.DTOs
 {
     public class PayrollStatementDto
     {
-        public string ReferenceMonth { get; set; }
-        public List<PayrollStatementItemDto> Items { get; set; }
-        public double GrossSalary { get; set; }
-        public double TotalDeductions { get; set; }
-        public double NetSalary { get; set; }
+        public string ReferenceMonth { get; }
+        public IReadOnlyList<PayrollStatementItemDto> Items { get; }
+        public double GrossSalary { get; }
+        public double TotalDeductions { get; }
+        public double NetSalary { get; }
+
+        public PayrollStatementDto(
+            string referenceMonth,
+            IReadOnlyList<PayrollStatementItemDto> items,
+            double grossSalary,
+            double totalDeductions,
+            double netSalary)
+        {
+            ReferenceMonth = referenceMonth ?? throw new ArgumentNullException(nameof(referenceMonth));
+            Items = items ?? throw new ArgumentNullException(nameof(items));
+            GrossSalary = grossSalary;
+            TotalDeductions = totalDeductions;
+            NetSalary = netSalary;
+        }
     }
 }

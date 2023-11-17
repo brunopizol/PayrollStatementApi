@@ -1,0 +1,17 @@
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\FolhaDePagamento.Application.csproj.AssemblyReference.cache
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\FolhaDePagamento.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\FolhaDePagamento.Application.AssemblyInfoInputs.cache
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\FolhaDePagamento.Application.AssemblyInfo.cs
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\FolhaDePagamento.Application.csproj.CoreCompileInputs.cache
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\bin\Debug\net6.0\FolhaDePagamento.Application.deps.json
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\bin\Debug\net6.0\FolhaDePagamento.Application.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\bin\Debug\net6.0\FolhaDePagamento.Application.pdb
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\bin\Debug\net6.0\FolhaDePagamento.Domain.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\bin\Debug\net6.0\FolhaDePagamento.Infra.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\bin\Debug\net6.0\FolhaDePagamento.Domain.pdb
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\bin\Debug\net6.0\FolhaDePagamento.Infra.pdb
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\FolhaDePagamento.Application.csproj.CopyComplete
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\FolhaDePagamento.Application.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\refint\FolhaDePagamento.Application.dll
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\FolhaDePagamento.Application.pdb
+C:\Users\bruno\source\repos\FolhaDePagamento\FolhaDePagamento.Application\obj\Debug\net6.0\ref\FolhaDePagamento.Application.dll
